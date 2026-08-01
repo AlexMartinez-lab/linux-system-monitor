@@ -16,6 +16,7 @@ htmlcov/
 
 # Operating system
 .DS_Store
+Thumbs.db
 
 #Generated reports
 reports/

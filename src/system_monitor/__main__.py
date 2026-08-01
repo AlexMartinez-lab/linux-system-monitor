@@ -1,5 +1,6 @@
 """Entry point for the Linux System Monitor."""
 
+from system_monitor.disk_info import get_disk_usage
 from system_monitor.memory_info import get_memory_usage
 from system_monitor.system_info import get_system_info
 
@@ -10,6 +11,8 @@ def main() -> None:
     system_info = get_system_info()
 
     memory_usage = get_memory_usage()
+
+    disk_usage = get_disk_usage()
     
     print("Linux System Monitor")
     print("======================")
@@ -45,6 +48,19 @@ def main() -> None:
         f"Usage: "
         f"{memory_usage['usage_percent']:.2f}%"
     )
+
+
+    print()
+    print("Disk")
+    print("====")
+    print()
+    print(f"Filesystem: {disk_usage['path']}")
+    print(f"Total: {disk_usage['total_gib']:.2f} GiB")
+    print(f"Used: {disk_usage['used_gib']:.2f} GiB")
+    print(f"Free: {disk_usage['free_gib']:.2f} GiB")
+    print(f"Usage: {disk_usage['usage_percent']:.2f}%")
+
+
 
 
 if __name__ == "__main__":
