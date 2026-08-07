@@ -3,7 +3,7 @@
 from system_monitor.disk_info import get_disk_usage
 from system_monitor.memory_info import get_memory_usage
 from system_monitor.system_info import get_system_info
-
+from system_monitor.uptime_info import get_system_uptime
 
 def main() -> None:
     """Display information about the system."""
@@ -13,6 +13,8 @@ def main() -> None:
     memory_usage = get_memory_usage()
 
     disk_usage = get_disk_usage()
+
+    system_uptime = get_system_uptime()
     
     print("Linux System Monitor")
     print("======================")
@@ -33,6 +35,20 @@ def main() -> None:
         "Python version: "
         f"{system_info['python_version']}"
     )
+
+
+    print()
+    print("System Uptime")
+    print("=============")
+    print()
+    print(
+        f"{system_uptime['days']} days, "
+        f"{system_uptime['hours']} hours, "
+        f"{system_uptime['minutes']} minutes, "
+        f"{system_uptime['seconds']} seconds"
+    )
+
+
 
     print()
     print("Memory")
