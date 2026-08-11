@@ -1,5 +1,6 @@
 """Entry point for the Linux System Monitor."""
 
+from system_monitor.cpu_info import get_cpu_usage
 from system_monitor.disk_info import get_disk_usage
 from system_monitor.memory_info import get_memory_usage
 from system_monitor.system_info import get_system_info
@@ -10,11 +11,15 @@ def main() -> None:
 
     system_info = get_system_info()
 
-    memory_usage = get_memory_usage()
+    system_uptime = get_system_uptime()
 
+    cpu_usage = get_cpu_usage()
+    
+    memory_usage = get_memory_usage()
+ 
     disk_usage = get_disk_usage()
 
-    system_uptime = get_system_uptime()
+    
     
     print("Linux System Monitor")
     print("======================")
@@ -48,8 +53,14 @@ def main() -> None:
         f"{system_uptime['seconds']} seconds"
     )
 
+    print()
+    print("CPU")
+    print("===")
+    print()
+    print(f"Logical CPUs: {cpu_usage['logical_cpus']}")
+    print(f"Usage: {cpu_usage['usage_percent']:.2f}%")
 
-
+    
     print()
     print("Memory")
     print("======")
