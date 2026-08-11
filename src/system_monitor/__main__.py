@@ -5,6 +5,7 @@ from system_monitor.disk_info import get_disk_usage
 from system_monitor.memory_info import get_memory_usage
 from system_monitor.system_info import get_system_info
 from system_monitor.uptime_info import get_system_uptime
+from system_monitor.process_info import get_processes
 
 def main() -> None:
     """Display information about the system."""
@@ -19,6 +20,7 @@ def main() -> None:
  
     disk_usage = get_disk_usage()
 
+    processes = get_processes()
     
     
     print("Linux System Monitor")
@@ -88,7 +90,15 @@ def main() -> None:
     print(f"Usage: {disk_usage['usage_percent']:.2f}%")
 
 
+    print()
+    print("Processes")
+    print("=========")
+    print()
+    print(f"{'PID':<8} Name")
+    print("-" * 30)
 
+    for process in processes[:10]:
+        print(f"{process.pid:<8} {process.name}")
 
 if __name__ == "__main__":
     main()
